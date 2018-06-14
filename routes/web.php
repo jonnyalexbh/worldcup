@@ -18,3 +18,29 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('jonny', function(){
+  $data = App\User::with('pronostics')->get();
+  return $data;
+
+  $data = App\Team::with('group')->get();
+  return $data;
+
+  $data = App\Pronostic::with('homeTeam')->get();
+  return $data;
+
+  $data = App\Match::with('homeTeam', 'awayTeam')->get();
+  return $data;
+
+  $data = App\Knockout::with('matches')->get();
+  return $data;
+
+  $data = App\Group::with('matches')->get();
+  return $data;
+
+  $data = App\User::find(2)->score_h(1);
+  return $data;
+
+  $data = App\User::find(1)->pronostic(1);
+  return $data;
+});

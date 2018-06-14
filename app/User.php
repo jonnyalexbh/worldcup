@@ -40,4 +40,25 @@ class User extends Authenticatable
       );
     }
   }
+  /*
+  * relationship
+  *
+  */
+  public function pronostics() {
+    return $this->hasMany('App\Pronostic');
+  }
+
+  public function score_h(int $match_id) {
+    // verify if user has entered scores for the match
+    return $this->pronostics->where('match_id', $match_id)->isEmpty() ? null : $this->pronostics->where('match_id', $match_id)->first()->score_h;
+  }
+
+  public function score_a(int $match_id) {
+    // verify if user has entered scores for the match
+    return $this->pronostics->where('match_id', $match_id)->isEmpty() ? null : $this->pronostics->where('match_id', $match_id)->first()->score_a;
+  }
+
+  public function pronostic(int $match_id) {
+    return $this->pronostics->where('match_id', $match_id)->first();
+  }
 }
