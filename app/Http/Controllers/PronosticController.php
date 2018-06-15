@@ -7,13 +7,13 @@ use Illuminate\Http\Request;
 
 class PronosticController extends Controller
 {
+  /**
+  * index
+  *
+  */
   public function index()
   {
     $groups = Group::with(['matches'])->get();
-
-    return view('pronostics.index', [
-      'groups' => $groups
-    ]);
-
+    return view('pronostics.index', ['groups' => $groups]);
   }
 }

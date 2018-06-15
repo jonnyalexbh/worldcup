@@ -79,5 +79,10 @@
     @yield('content')
   </main>
 </div>
+<!-- angular -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js" charset="utf-8"></script>
+<!-- app-worldcup -->
+<script src="{{ mix('js/app-worldcup.js') }}" charset="utf-8"></script>
+@yield('js')
 </body>
 </html>
